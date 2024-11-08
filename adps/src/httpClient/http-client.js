@@ -70,7 +70,9 @@ export class HttpClient {
 
   console.log(response.bodyUsed); // Should log 'true' after reading the body
   console.log("Response data:", responseData); // Output the response data
-  return this.result(responseData);
+  sessionStorage.setItem('token', responseData.authToken);
+  console.log("Token:", responseData.authToken); // Output the response data
+  //return this.result(responseData);
   }
 
   //POST - Request

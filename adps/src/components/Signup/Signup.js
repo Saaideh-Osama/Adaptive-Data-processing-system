@@ -27,7 +27,7 @@ function Signup() {
   /*Client Form end */
 
   //CFe: Handle the form submissions
-  const handleSubmitClient = (e) => {
+   const handleSubmitClient = (e) => {
     e.preventDefault();
     const clientData = {
       email: clientEmail,
@@ -41,11 +41,10 @@ function Signup() {
       role_id : 1,
       restaurant_info: {}
     };
-    const data = httpClient.postAuth("/auth/signup", clientData);
-      
-    // save auth-token in session storage
-    const token = data.authToken;
-    sessionStorage.setItem('authToken', token);
+      const result =  httpClient.postAuth("/auth/signup", clientData);
+      console.log(result);
+       
+    
   };
   
   const handleSubmitRestaurant = (e) => {
@@ -63,10 +62,8 @@ function Signup() {
         tags: clientfoodPreference
       }
     };
-    const data = httpClient.postSignUp("/auth/signup", clientData).json();
-        // save auth-token in session storage
-        const token = data.authToken;
-        sessionStorage.setItem('authToken', token);
+    httpClient.postAuth("/auth/signup", clientData);
+
     
   };
 
